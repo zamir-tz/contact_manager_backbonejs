@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.css">
+    <link rel="stylesheet" href="index.css">
+    <title>Contact manager app</title>
+</head>
+<body>
+    
+    <div class="container">
+        <h1>Contact manager</h1>
+       <div class="table-responsive-sm">
+            <table class="table table-hover" style="table-layout: fixed;">
+                <thead>
+                    <tr>
+                        <th scope="col">Avatar</th>
+                        <th scope="col">Lastname</th>
+                        <th scope="col">Firstname</th>
+                        <th scope="col">email</th>
+                        <th scope="col">phone</th>
+                        <th scope="col">action</th>
+                    </tr>
+                    <tr>
+                        <form id="newContact">
+                        <td>
+                            <div class="file btn btn-primary" style="position: relative; overflow: hidden;">
+                                Upload
+                                <input type="file" id="avatarUpload" class="avatarUpload" name="file" style="position: absolute; font-size: 50px; opacity: 0; right: 0; top: 0;">
+                            </div>
+                        </td>
+                            <td><input type="text" class="form-control lastname-input"></td>
+                            <td><input type="text" class="form-control firstname-input"></td>
+                            <td><input type="text" class="form-control email-input"></td>
+                            <td><input type="text" class="form-control phone-input"></td>
+                            <td><button type="submit" class="btn btn-primary add-contact"> Add </button></td>
+                        </form>
+                    </tr>
+                </thead>
+                <tbody class="contacts-list"></tbody>
+            </table>
+        </div>
+    </div>
+    <script type="text/template" class="contacts-list-template">
+        <td class="avatar-show"><img class="rounded" style="width: 50%;" src="<%= avatar %>" ></td>
+        <td><div class="lastName"><%= lastName %></div></td>
+        <td><div class="firstName"><%= firstName %></div></td>
+        <td><div class="email"><%= email %></div></td>
+        <td><div class="phone"><%= phone %></div></td>
+        <td>
+            <button class="btn btn-warning edit-contact">Edit</button>
+            <button class="btn btn-danger delete-contact">Delete</button>
+            <button class="btn btn-success update-contact" style="display:none">Update</button>
+            <button class="btn btn-danger cancel" style="display:none">Cancel</button>
+        </td>
+    </script>
+
+    <script src="node_modules/jquery/dist/jquery.min.js"></script>
+    <script src="node_modules/underscore/underscore-min.js"></script>
+    <script src="node_modules/backbone/backbone.js"></script>
+    <script type="module" src="./src/app.js"></script>
+</body>
+</html>
